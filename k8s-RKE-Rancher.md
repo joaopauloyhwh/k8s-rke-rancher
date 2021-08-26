@@ -1,27 +1,28 @@
 # Instalação Kubernetes com RKE + RANCHER + LestsEncrypt
+***
 OBS: 
 1 - colocar as VMs de node master em hosts diferentes dentro do cluster do VM
 2 - Redes com 10Gb
 3 - DRS, Storage, Discos SSD
 
 
-################### Procedimento executado em todos os nodes do cluster #########################
+# Procedimento executado em todos os nodes do cluster
 ## INICIO ##
 
-1 - Desabilitando o selinux:
+**1 - Desabilitando o selinux:**
 ```
 # setenforce 0
 # vim /etc/selinux/config
 SELINUX=disabled
 ```
 
-2 - Parando o firewall e desabilitando sua inicialização automática:
+**2 - Parando o firewall e desabilitando sua inicialização automática:**
 ```
 # systemctl stop firewalld
 # systemctl disable firewalld
 ```
 
-3 - Configuração de DNS
+**3 - Configuração de DNS**
 ```
 # vim /etc/hosts
 10.96.112.90 master1.example.com master1
@@ -29,8 +30,8 @@ SELINUX=disabled
 10.96.112.92 worker1.example.com worker3
 ```
 
-4 - Atualização do SO, Instalação de pacotes utilitários, adição do repositório docker e instalação da
-versão 18.09.7:
+**4 - Atualização do SO, Instalação de pacotes utilitários, adição do repositório docker e instalação da
+versão 18.09.7:**
 ```
 # yum -y update
 # yum -y install yum-utils telnet rsync net-tools lvm2 wget vim curl bash-completion bash-completion-extras
@@ -39,24 +40,22 @@ versão 18.09.7:
 ```
 
 
-# OBS: A versão 18.09.7 foi instalada devido à estabilidade com a versão mais
-recente do Rancher.
+### OBS: A versão 18.09.7 foi instalada devido à estabilidade com a versão mais recente do Rancher.
 
-
-5 - Excluir o docker de atualizações não programadas 
+**5 - Excluir o docker de atualizações não programadas**
 `# echo exclude=docker* containerd* >> /etc/yum.conf`
 
 
-6 - Criação do usuário ‘k8s’ e o adicionamos nos grupos ‘wheel’ e ‘docker’,
+**6 - Criação do usuário ‘k8s’ e o adicionamos nos grupos ‘wheel’ e ‘docker’**
 ```
 # useradd k8s Senha: s@b1N@2020
 # gpasswd -a k8s wheel
 # gpasswd -a k8s docker
 ```
 
-7 - Configurar o SYSCTL para uso do docker, network bridges para o correto funcionamento do cluster
+**7 - Configurar o SYSCTL para uso do docker, network bridges para o correto funcionamento do cluster
 kubernetes. Para isso, foi criado um arquivo dentro de /etc/sysctl.d/ com essas
-informações, e em seguida, foi executado o comando para carregar esse arquivo no kernel:
+informações, e em seguida, foi executado o comando para carregar esse arquivo no kernel:**
 ```
 # vim /etc/sysctl.d/99-k8s.conf
 net.bridge-nf-call-ip6tables = 1
@@ -65,58 +64,58 @@ net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 ```
 
-Recaregar as configurações
+**Recaregar as configurações**
 `# sysctl --system`
 
 
-8 - O swap foi desabilitado conforme recomendação na documentação do Kubernetes:
+**8 - O swap foi desabilitado conforme recomendação na documentação do Kubernetes:**
 ```
 # swapoff -a
 # sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
 
 
-9 - Ative o NTP
+**9 - Ative o NTP**
 ```
 # yum install ntp -y
 # systemctl enable ntpd
 # systemctl start ntpd
 ```
 
-10 - Iniciando e habilitando a inicialização automática:
+**10 - Iniciando e habilitando a inicialização automática:**
 ```
 # systemctl start docker
 # systemctl enable docker
 ```
 
-11 - Reinicie os nodes
+**11 - Reinicie os nodes**
 
-## FIM ##
-
-
+### FIM 
 
 
-################### Procedimento executado apenas no node Master ###############################
+
+
+## Procedimento executado apenas no node Master
 
 **1 - Criar uma chave ssh e a replicação desta para os demais nodes. O procedimento precisa ser executado a partir do usuário ‘k8s’:**
 
-Gere um chave ssh com o usuário k8s
+**Gere um chave ssh com o usuário k8s**
 ```
 $ su - k8s
 $ ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/k8s -C rke (Nova Forma de gerar chave ssh)
 $ ssh-keygen -f ~/.ssh/k8s
 ```
 
-Copie a chave ssh para todos os nodes do cluster
+**Copie a chave ssh para todos os nodes do cluster**
 ```
 # ssh-copy-id -i ~/.ssh/k8s  k8s@node01:
 # ssh -i ~/.ssh/k8s k8s@node01
 ```
 
-2 - Remover a senha da conta k8s em todos os nodes
+**2 - Remover a senha da conta k8s em todos os nodes**
 `# passwd --delete k8s`
 
-3 - Desabite autenticação por senha do ssh e reinicie o serviço 
+**3 - Desabite autenticação por senha do ssh e reinicie o serviço**
 ```
 # vim /etc/ssh/sshd_config
   PasswordAuthentication no
@@ -124,7 +123,7 @@ Copie a chave ssh para todos os nodes do cluster
 ```
 
 
-2 - Baixe o RKE para Linux
+**2 - Baixe o RKE para Linux**
 ```
 # wget https://github.com/rancher/rke/releases/download/v1.0.4/rke_linux-amd64
 # wget https://github.com/rancher/rke/releases/download/v1.0.8/rke_linux-arm64
@@ -137,7 +136,7 @@ Copie a chave ssh para todos os nodes do cluster
 
 
 
-3 - Baixe o KubeCTL 
+**3 - Baixe o KubeCTL**
 ```
 # curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/linux/amd64/kubectl
 # chmod 755 kubectl
@@ -147,7 +146,7 @@ Copie a chave ssh para todos os nodes do cluster
 
 
 
-4 - 3 - Baixe o Kubeadm (OPICIONAL)
+**4 - 3 - Baixe o Kubeadm (OPICIONAL)**
 ```
 # curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/
 linux/amd64/kubeadm
