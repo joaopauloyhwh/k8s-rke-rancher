@@ -282,7 +282,7 @@ data:
 ---
 ```
 
-**Aplicar a ocnfiguração do configMap do MetalLB**
+**Aplicar a configuração do configMap do MetalLB**
 
 `kubectl apply -f metallb.yaml`
 
@@ -300,6 +300,7 @@ kubectl get svc
 
 
 [Referencia: Instalação do MetallLB](https://metallb.universe.tf/installation/)
+
 [Referencia: Configuração do MetalLB](https://metallb.universe.tf/configuration/)
 
 
@@ -340,7 +341,7 @@ metadata:
   namespace: kube-system
 spec:
   rules:
-  - host: traefik.lab.example.com
+  - host: traefik.empresa.com.br
     http:
       paths:
       - path: /
@@ -366,7 +367,7 @@ $ kubectl get svc -n kube-system
 
 
 
-## 10 - Instalando o Helm 
+## 10 - Instalar e configurar o Helm 
 
 ```
 $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
@@ -436,7 +437,7 @@ DNS.1 = *.homologacao.com.br
 
 ## 13 - Habilitando o SSL no Jupyterhub
 
-**Edite o arquivo config.yaml e proucure a entrada https e cole o conteudo do certificado e chave para habilitar o SSL. Salve o arquivo**
+**Edite o arquivo config.yaml e proucure a entrada "https" e cole o conteudo do certificado e chave para habilitar o SSL. Salve o arquivo**
 
 ```
 $ vim config.yaml
@@ -460,7 +461,6 @@ $ vim config.yaml
         -----END CERTIFICATE-----
 ---
 ```
-
 
 
 ## 14 - Configuração do LDAP no jupyterhub
@@ -490,9 +490,9 @@ hub:
 ```
 
 
-## 15 - Instalação do JupyterHUB
+## 15 - Depois dos ajustes no arquivo config.yaml do jupyterhub, execute a instalação
 
-**Realize o deployment com a criação do namespace jupyterhub e utilizando o arquivo config.yaml**
+**Realize o deployment com a criação do namespace jupyterhub e utilize o arquivo config.yaml com os ajustes de "SSL" e "LDAP"**
 
 ```
 $ helm upgrade --cleanup-on-fail \
@@ -509,7 +509,6 @@ $ helm upgrade --cleanup-on-fail \
 $ kubectl get pod --namespace jupyterhub
 $ kubectl get service --namespace jupyterhub
 ```
-
 
 
 ## 16 - Configuração do ingress para acessar a aplicação web do Jupyterhub
