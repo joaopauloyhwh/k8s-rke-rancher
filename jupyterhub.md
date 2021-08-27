@@ -250,7 +250,7 @@ $ kubectl get nodes
 figura8
 
 
-## 8 - Instalar e Configurar o MetalLB (Se o ambiente já estiver usando o balanciador, o metalLB não é necessário)
+## 8 - Instalar e Configurar o Metallb (Se o ambiente já estiver usando o balanciador, o metallb não é necessário)
 
 **Instalação via manifest:**
 
@@ -261,7 +261,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/man
 
 ```
 
-**Criar o arquivo de configuração do metalLB como no exemplo abaixo:**
+**Criar o arquivo de configuração do metallb como no exemplo abaixo:**
 
 ```
 
@@ -282,14 +282,14 @@ data:
 ---
 ```
 
-**Aplicar a configuração do configMap do MetalLB:**
+**Aplicar a configuração do configMap do Metallb:**
 
 `kubectl apply -f metallb.yaml`
 
 
 
       
-**Realizar um teste no metalLB**
+**Realizar um teste no metallb**
 
 ```
 kubectl create deployment my-nginx-metalllb --image=nginx
@@ -390,16 +390,15 @@ $ chmod 700 /home/usuario/.kube/config
 
 `$ helm repo update`
 
-**Baixar o conf do jupterhub e realizar as configurações necessárias antes do deployment:**
+**Baixar o conf do jupterhub e realizar as configurações necessárias ANTES do deployment:**
 
 `$ helm show values jupyterhub/jupyterhub > config.yaml` 
 
 
+[Referencia: Instalação do Jupterhub](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub/installation.html)
 
-[Referencia: Instalação do Jupterhub]https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub/installation.html
 
 
- 
 ## 12 - Criar o certificado e chave para configuração do SSL
 
 **Crie o arquivo chamado "openssl.cfg" e insira as configurações de acordo com o ambiente:**
@@ -465,8 +464,10 @@ $ vim config.yaml
 ---
 ```
 
+[Referencia: Habilitação do SSL](https://zero-to-jupyterhub.readthedocs.io/en/latest/administrator/security.html#https)
 
-## 14 - Configuração do LDAP no jupyterhub
+
+## 14 - Configuração do Active Directory no jupyterhub
 
 **Edite o arquivo config.yaml e proucure a entrada "hub" e a subentrada "config" e realize a configuração de acordo com o ambiente e salve o arquivo**
 
@@ -492,6 +493,9 @@ hub:
       user_search_base: dc=homologacao,dc=com,dc=br
 ---
 ```
+
+
+[Referencia: Integração com LDAP e Active Directory](https://zero-to-jupyterhub.readthedocs.io/en/latest/administrator/authentication.html)
 
 
 ## 15 - Defina o tipo de serciço do jupyterhub
