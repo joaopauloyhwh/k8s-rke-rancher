@@ -34,7 +34,7 @@ $ sudo vim /etc/fstab
 
 ## 2 - Instalar o docker em todos os nodes do cluster
 
-**Pode ser utilizado o gerenciador de pacote zypper ou via script**
+**Pode ser utilizado o gerenciador de pacote zypper ou via script:**
 
 ```
 $ zypper in docker
@@ -47,7 +47,7 @@ $ sudo usermod -aG docker suporte
 
 ## 3 - Configuração do proxy no docker em TODOS os hosts
 
-**Crie o direrotio .docker e o arquivo config.jason no home do usuário**
+**Crie o direrotio .docker e o arquivo config.jason no home do usuário:**
 
 ```
 $ mkdir .docker
@@ -69,7 +69,7 @@ $ vim .docker/config.json
 ```
 
 
-**Configure o proxy no "sistema operacional"**
+**Configure o proxy no "sistema operacional:"**
 
 ```
 $ sudo vim /etc/sysconfig/proxy
@@ -157,7 +157,7 @@ NO_PROXY="localhost, 127.0.0.1,.homologacao.com.br,.empresa.com.br"
 
 ## 4 - Instalar o rancher-server via docker no node node2003
 
-**Vamos usar as opções "-v" para persistir os dados e "-p" para o mapeamento das portas 80 e 443**
+**Vamos usar as opções "-v" para persistir os dados e "-p" para o mapeamento das portas 80 e 443:**
 
 ```
 
@@ -165,33 +165,33 @@ $ sudo docker run -d --name rancher --restart=unless-stopped -p 80:80 -p 443:443
 
 ```
 
-- **Acessar o rancher-server via web (https://node2003.homologacao.com.br/), defina uma senha para o usuário admin e defina a url de acesso**
+- **Acessar o rancher-server via web (https://node2003.homologacao.com.br/), defina uma senha para o usuário admin e defina a url de acesso:**
 
 
 ## 5 - Provisionar e configurar o Cluster Kubernetes com RKE
 
-**Entrar no rancher server e selecionar a opção *Add Cluster***
+**Entrar no rancher server e selecionar a opção *Add Cluster:***
 
 figura1
 
-**Selecione a opção *Existing nodes***
+**Selecione a opção *Existing nodes:***
 
 figura2
 
-**Coloque o nome do Cluster**
+**Coloque o nome do Cluster:**
 
 figura3
 
-**Desabilite o Ingress Nginx e clique en Next**
+**Desabilite o Ingress Nginx e clique en Next:**
 
 figura4
 
-**Selecione os serviços *etcd*, *Control Plane* e *Worker* para executar em todos os nodes do cluster. Copie o código gerado pelo rancher e clique em Done**
+**Selecione os serviços *etcd*, *Control Plane* e *Worker* para executar em todos os nodes do cluster. Copie o código gerado pelo rancher e clique em Done:**
 
 figura5
 
 
-- **Execute o comando gerado em TODOS os nodes do cluster node2000, node2001 e node2002.**
+- **Execute o comando gerado em TODOS os nodes do cluster node2000, node2001 e node2002:**
 
 ```
 Exemplo:
@@ -202,7 +202,7 @@ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kube
 
 ## 6 - Instalar e configurar o kubectl no rancher-server (Opcional)
 
-**Instalar o kubectl no no host do node2003**
+**Instalar o kubectl no no host do node2003:**
 
 ```
 
@@ -211,14 +211,14 @@ $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 ```
 
-**Copiar o kubeconfig no rancher-server *Cluster Local***
+**Copiar o kubeconfig no rancher-server *Cluster Local:***
 
 figura6
 
 figura7
 
 
-**Depois de copiar o kubeconfig no rancher-server criar o arquivo config e inserir o conteúdo**
+**Depois de copiar o kubeconfig no rancher-server criar o arquivo config e inserir o conteúdo:**
 
 ```
 $ mkdir .kube
@@ -231,7 +231,7 @@ $ kubectl get nodes
 
 ## 7 - Instalar e configurar o Longhorn 
 
-**Obs: No SUSE, Instalar o pacote open-iscsi como pré-requisitos em TODOS OS NODES DO CLUSTER**
+**Obs: No SUSE, Instalar o pacote open-iscsi como pré-requisitos em TODOS OS NODES DO CLUSTER:**
 
 ```
 # zypper in open-iscsi
@@ -252,7 +252,7 @@ figura8
 
 ## 8 - Instalar e Configurar o MetalLB (Se o ambiente já estiver usando o balanciador, o metalLB não é necessário)
 
-**Instalação via manifest**
+**Instalação via manifest:**
 
 ```
 
@@ -261,7 +261,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/man
 
 ```
 
-**Criar o arquivo de configuração do metalLB como no exemplo abaixo**
+**Criar o arquivo de configuração do metalLB como no exemplo abaixo:**
 
 ```
 
@@ -282,7 +282,7 @@ data:
 ---
 ```
 
-**Aplicar a configuração do configMap do MetalLB**
+**Aplicar a configuração do configMap do MetalLB:**
 
 `kubectl apply -f metallb.yaml`
 
@@ -291,13 +291,13 @@ data:
       
 **Realizar um teste no metalLB**
 
-**OBS: Depois remover o deployment e service de teste**
-
 ```
 kubectl create deployment my-nginx-metalllb --image=nginx
 kubectl expose deployment my-nginx-metalllb --port 80  --type LoadBalancer
 kubectl get svc
 ````
+
+**OBS: Depois remover o deployment e service de teste**
 
 
 [Referencia: Instalação do MetallLB](https://metallb.universe.tf/installation/)
@@ -307,7 +307,7 @@ kubectl get svc
 
 ## 9 - Instalar e configurar o Ingress com o traefik - DNS 
 
-**Instalação via manifest**
+**Instalação via manifest:**
 
 ```
 $ kubectl apply -f https://raw.githubusercontent.com/traefik/traefik/v1.7/examples/k8s/traefik-rbac.yaml
@@ -352,7 +352,7 @@ spec:
 ---
 
 ```
-**Aplique o manifesto**
+**Aplique o manifesto:**
 
 ```
 $ kubectl apply -f svc-ingress.yaml
@@ -382,15 +382,15 @@ $ chmod 700 /home/usuario/.kube/config
 
 ## 11 - Instalar e Configurar o Jupyter HUB via Helm
 
-**Adicionar o repositorio do jupyterhub no helm**
+**Adicionar o repositório do jupyterhub no helm:**
 
 `$ helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/`
 
-**Atualizar o repositorio**
+**Atualizar o repositório:**
 
 `$ helm repo update`
 
-**Baixar o conf do jupterhub e realizar as configurações necessárioas antes do deployment**
+**Baixar o conf do jupterhub e realizar as configurações necessárias antes do deployment:**
 
 `$ helm show values jupyterhub/jupyterhub > config.yaml` 
 
@@ -400,7 +400,9 @@ $ chmod 700 /home/usuario/.kube/config
 
 
  
-## 12 - Criar o certifica echave para configuração do SSL,criar o arquivo "openssl.cfg"
+## 12 - Criar o certificado e chave para configuração do SSL
+
+**Crie o arquivo chamado "openssl.cfg" e insira as configurações de acordo com o ambiente:**
 
 ```
 
@@ -427,7 +429,7 @@ DNS.1 = *.homologacao.com.br
 ```
 
 
-**Depois gera o certificado com a chave**
+**Depois gera o certificado e a chave especificando o arquivo criado anteriormente:**
 
 `$ openssl.exe req -nodes -sha256 -newkey rsa:2048 -keyout "jupyter.key" -out "jupyter.csr" -config "openssl.cfg"`
 
@@ -438,7 +440,7 @@ DNS.1 = *.homologacao.com.br
 
 ## 13 - Habilitando o SSL no Jupyterhub
 
-**Edite o arquivo config.yaml e proucure a entrada "https" e cole o conteudo do certificado e chave para habilitar o SSL e salve o arquivo**
+**Edite o arquivo config.yaml e proucure a entrada "https" e cole o conteudo do certificado e chave para habilitar o SSL e salve o arquivo:**
 
 ```
 $ vim config.yaml
@@ -468,7 +470,6 @@ $ vim config.yaml
 
 **Edite o arquivo config.yaml e proucure a entrada "hub" e a subentrada "config" e realize a configuração de acordo com o ambiente e salve o arquivo**
 
-**Obs:altere a entrada "service" para type: "LoadBalancer"
 
 ```
 $ vim config.yaml
@@ -493,9 +494,21 @@ hub:
 ```
 
 
-## 15 - Depois dos ajustes no arquivo config.yaml do jupyterhub, execute a instalação
+## 15 - Defina o tipo de serciço do jupyterhub
 
-**Realize o deployment com a criação do namespace jupyterhub e utilize o arquivo config.yaml com os ajustes de "SSL" e "LDAP"**
+**Edite o arquivo config.yaml e proucure a entrada "hub" e a subentrada "service" e altere a configuração para "LoadBalancer" e salve o arquivo**
+
+
+```
+$ vim config.yaml
+service:
+    type: LoadBalancer
+``` 
+
+
+## 16 - Depois dos ajustes no arquivo config.yaml do jupyterhub, execute a instalação
+
+**Realize o deployment com a criação do namespace jupyterhub e utilize o arquivo config.yaml com os ajustes de "SSL" e "LDAP":**
 
 ```
 $ helm upgrade --cleanup-on-fail \
@@ -506,7 +519,7 @@ $ helm upgrade --cleanup-on-fail \
   --values config.yaml
 ```
 
-**Verifique os pods e services do Jupyterhub**
+**Verifique os pods e services do Jupyterhub:**
 
 ```
 $ kubectl get pod --namespace jupyterhub
@@ -514,7 +527,7 @@ $ kubectl get service --namespace jupyterhub
 ```
 
 
-## 16 - Configuração do ingress para acessar a aplicação web do Jupyterhub
+## 17 - Configuração do ingress para acessar a aplicação web do Jupyterhub
 
 ```
 $ touch ingress-jupyterhub.yaml
