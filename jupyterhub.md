@@ -166,7 +166,7 @@ $ sudo docker run -d --name rancher --restart=unless-stopped -p 80:80 -p 443:443
 
 1. Abra um navegador web e digite o endereço IP do seu host: **https: // <SERVER_IP>.**
 2. Quando solicitado, crie uma senha para a conta de **administrador**
-3. Defina o URL do Rancher Server. O URL pode ser um endereço IP ou um nome de host. No entanto, cada nó adicionado ao seu cluster deve ser capaz de se conectar a este URL.
+3. Defina a URL do Rancher Server. Pode ser um endereço IP ou um nome de host. No entanto, cada nó adicionado ao seu cluster deve ser capaz de se conectar a esta URL.
 
 [referência: Instalação do rancher](https://rancher.com/docs/rancher/v2.5/en/quick-start-guide/deployment/quickstart-manual-setup/)
 
