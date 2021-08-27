@@ -1,4 +1,4 @@
-# Stack - Rancher + Kubernetes + JupyterHUB + SSL + LDAP 
+# Stack - Rancher + Kubernetes + Longhorn + MetalLB + JupyterHUB + SSL + LDAP 
 
 ### Servidores:
 
