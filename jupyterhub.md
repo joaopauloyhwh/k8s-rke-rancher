@@ -160,12 +160,15 @@ NO_PROXY="localhost, 127.0.0.1,.homologacao.com.br,.empresa.com.br"
 **Vamos usar as opções "-v" para persistir os dados e "-p" para o mapeamento das portas 80 e 443:**
 
 ```
-
 $ sudo docker run -d --name rancher --restart=unless-stopped -p 80:80 -p 443:443 -v /opt/rancher:/var/lib/rancher --privileged rancher/rancher:latest
 
 ```
 
-- **Acessar o rancher-server via web (https://node2003.homologacao.com.br/), defina uma senha para o usuário admin e defina a url de acesso:**
+1. Abra um navegador web e digite o endereço IP do seu host: **https: // <SERVER_IP>.**
+2. Quando solicitado, crie uma senha para a conta de **administrador**
+3. Defina o URL do Rancher Server. O URL pode ser um endereço IP ou um nome de host. No entanto, cada nó adicionado ao seu cluster deve ser capaz de se conectar a este URL.
+
+[referência: Instalação do rancher](https://rancher.com/docs/rancher/v2.5/en/quick-start-guide/deployment/quickstart-manual-setup/)
 
 
 ## 5 - Provisionar e configurar o Cluster Kubernetes com RKE
