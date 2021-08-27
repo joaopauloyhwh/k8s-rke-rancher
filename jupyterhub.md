@@ -69,37 +69,37 @@ $ vim .docker/config.json
 ```
 
 
-**Configure o proxy do "SO"**
+**Configure o proxy no "sistema operacional"**
 
-
+```
 $ sudo vim /etc/sysconfig/proxy
 
-* ## Path:        Network/Proxy
-* ## Description:
-* ## Type:        yesno
-* ## Default:     no
-* ## Config:      kde,profiles
-* #
-* # Enable a generation of the proxy settings to the profile.
-* # This setting allows to turn the proxy on and off while
-* # preserving the particular proxy setup.
-* # 
-**PROXY_ENABLED="yes"**
+## Path:        Network/Proxy
+## Description:
+## Type:        yesno
+## Default:     no
+## Config:      kde,profiles
+#
+# Enable a generation of the proxy settings to the profile.
+# This setting allows to turn the proxy on and off while
+# preserving the particular proxy setup.
+# 
+PROXY_ENABLED="yes"**
 
  
 
-*## Type:        string
-*## Default:     ""
-*#
-*# Some programs (e.g. lynx, arena and wget) support proxies, if set in
-*# the environment. 
-*# Example: HTTP_PROXY="http://proxy.provider.de:3128/"
-*HTTP_PROXY="http://proxycorporativo.empresa.com.br:3128"
+## Type:        string
+## Default:     ""
+#
+# Some programs (e.g. lynx, arena and wget) support proxies, if set in
+# the environment. 
+# Example: HTTP_PROXY="http://proxy.provider.de:3128/"
+HTTP_PROXY="http://proxycorporativo.empresa.com.br:3128"
 
  
 
-*## Type:        string
-*## Default:     ""
+## Type:        string
+## Default:     ""
 #
 # Some programs (e.g. lynx, arena and wget) support proxies, if set in
 # the environment. 
@@ -151,7 +151,7 @@ SOCKS5_SERVER=""
 #
 NO_PROXY="localhost, 127.0.0.1,.homologacao.com.br,.empresa.com.br"
 ---
-
+```
 
 
 
