@@ -2,16 +2,16 @@
 
 ### Servidores:
 
-* juph2000
+* node2000
 
-* juph2001
+* node2001
 
-* juph2002
+* node2002
 
-* juph2003 (rancher server)
+* node2003 (rancher server)
 
 
-# INICIO 
+# INÍCIO 
 
 ## 1 - Desativar o SWAP - Em Todos os Nodes do cluster
 
@@ -155,7 +155,7 @@ NO_PROXY="localhost, 127.0.0.1,.homologacao.com.br,.empresa.com.br"
 ```
 
 
-## 4 - Instalar o rancher-server via docker no node juph2003
+## 4 - Instalar o rancher-server via docker no node node2003
 
 **Vamos usar as opções "-v" para persistir os dados e "-p" para o mapeamento das portas 80 e 443**
 
@@ -165,7 +165,7 @@ $ sudo docker run -d --name rancher --restart=unless-stopped -p 80:80 -p 443:443
 
 ```
 
-- **Acessar o rancher-server via web (https://juph2003.homologacao.com.br/), defina uma senha para o usuário admin e defina a url de acesso**
+- **Acessar o rancher-server via web (https://node2003.homologacao.com.br/), defina uma senha para o usuário admin e defina a url de acesso**
 
 
 ## 5 - Provisionar e configurar o Cluster Kubernetes com RKE
@@ -191,18 +191,18 @@ figura4
 figura5
 
 
-- **Execute o comando gerado em TODOS os nodes do cluster juph2000, juph2001 e juph2002.**
+- **Execute o comando gerado em TODOS os nodes do cluster node2000, node2001 e node2002.**
 
 ```
 Exemplo:
-sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.5.9 --server https://juph2003.homologacao.com.br --token rnsl92dn2wd785598d5nd2dp66v52brcq2jg4dbj4hvtlxm7cscmk5 --ca-checksum 8f576d7fc8cd22e7212eede591ad2aea244405543416fdfde36152a8fa3d625b --etcd --controlplane --worker
+sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.5.9 --server https://node2003.homologacao.com.br --token rnsl92dn2wd785598d5nd2dp66v52brcq2jg4dbj4hvtlxm7cscmk5 --ca-checksum 8f576d7fc8cd22e7212eede591ad2aea244405543416fdfde36152a8fa3d625b --etcd --controlplane --worker
 
 ```
 
 
 ## 6 - Instalar e configurar o kubectl no rancher-server (Opcional)
 
-**Instalar o kubectl no no host do juph2003**
+**Instalar o kubectl no no host do node2003**
 
 ```
 
