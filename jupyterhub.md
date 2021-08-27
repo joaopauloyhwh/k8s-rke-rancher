@@ -290,6 +290,7 @@ data:
 
       
 **Realizar um teste no metalLB**
+
 **OBS: Depois remover o deployment e service de teste**
 
 ```
@@ -376,7 +377,7 @@ $ ./get_helm.sh
 $ chmod 700 /home/usuario/.kube/config
 ```
 
-[Referencia: Instalação do helm]https://helm.sh/docs/intro/install/
+[Referencia: Instalação do helm](https://helm.sh/docs/intro/install/)
 
 
 ## 11 - Instalar e Configurar o Jupyter HUB via Helm
@@ -437,7 +438,7 @@ DNS.1 = *.homologacao.com.br
 
 ## 13 - Habilitando o SSL no Jupyterhub
 
-**Edite o arquivo config.yaml e proucure a entrada "https" e cole o conteudo do certificado e chave para habilitar o SSL. Salve o arquivo**
+**Edite o arquivo config.yaml e proucure a entrada "https" e cole o conteudo do certificado e chave para habilitar o SSL e salve o arquivo**
 
 ```
 $ vim config.yaml
@@ -465,7 +466,9 @@ $ vim config.yaml
 
 ## 14 - Configuração do LDAP no jupyterhub
 
-**Edite o arquivo config.yaml e proucure a entrada "hub" e a subentrada "config" e realize a configuração de acordo com o ambiente. Salve o arquivo**
+**Edite o arquivo config.yaml e proucure a entrada "hub" e a subentrada "config" e realize a configuração de acordo com o ambiente e salve o arquivo**
+
+**Obs:altere a entrada "service" para type: "LoadBalancer"
 
 ```
 $ vim config.yaml
