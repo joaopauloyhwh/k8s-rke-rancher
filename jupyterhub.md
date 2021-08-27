@@ -246,10 +246,11 @@ $ kubectl get nodes
 2. Selecione o Projeto/namespace default 
 3. Selecione Apps
 4. Clique em Launch e faça a busca pelo longhorn
+
 figura8
 
 
-## 8 - Instalar e Configurar o MetalLB (Se o ambiente já estiver usando o balanciador externo, o metalLB não é necessário)
+## 8 - Instalar e Configurar o MetalLB (Se o ambiente já estiver usando o balanciador, o metalLB não é necessário)
 
 **Instalação via manifest**
 
