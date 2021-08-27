@@ -74,16 +74,16 @@ $ vim .docker/config.json
 
 $ sudo vim /etc/sysconfig/proxy
 
-*## Path:        Network/Proxy
-*## Description:
-*## Type:        yesno
-*## Default:     no
-*## Config:      kde,profiles
-*#
-*# Enable a generation of the proxy settings to the profile.
-*# This setting allows to turn the proxy on and off while
-*# preserving the particular proxy setup.
-*# 
+* ## Path:        Network/Proxy
+* ## Description:
+* ## Type:        yesno
+* ## Default:     no
+* ## Config:      kde,profiles
+* #
+* # Enable a generation of the proxy settings to the profile.
+* # This setting allows to turn the proxy on and off while
+* # preserving the particular proxy setup.
+* # 
 **PROXY_ENABLED="yes"**
 
  
