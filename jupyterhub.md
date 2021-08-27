@@ -381,7 +381,7 @@ $ chmod 700 /home/usuario/.kube/config
 
 ## 11 - Instalar e Configurar o Jupyter HUB via Helm
 
-** Adicionar o repositorio do jupyterhub no helm**
+**Adicionar o repositorio do jupyterhub no helm**
 
 `$ helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/`
 
@@ -399,7 +399,7 @@ $ chmod 700 /home/usuario/.kube/config
 
 
  
-## 12 - Criar o arquivo "openssl.cfg", alterar as opções em negrito para sua aplicação
+## 12 - Criar o certifica echave para configuração do SSL,criar o arquivo "openssl.cfg"
 
 ```
 
