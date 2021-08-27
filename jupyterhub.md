@@ -409,9 +409,9 @@ req_extensions = v3_req
 prompt = no
 [req_distinguished_name]
 C = BR
-ST = Distrito Federal
-L = Brasilia
-O = Confederacao Nacional das Cooperativas do Sicoob
+ST = ESTADO
+L = CIDADE
+O = Empresa de TI
 OU = Area de Infraestrutura
 CN = *.homologacao.com.br
 [v3_req]
@@ -430,15 +430,6 @@ DNS.1 = *.homologacao.com.br
 
 
 **Solicitar assinatura do certificado**
-https://certificado.sicoob.com.br/certsrv/
-
-
-**OBS: Numero da requisição ## mandar um e-mail para certificadodigital@sicoob.com.br para adiantar o atendimento**
-**Your Request Id is 163894.**
-**Testa o certificado assinado**
-**$ openssl x509 -in jupyter-new.cer -noout -text**
-
-
 
 
 
