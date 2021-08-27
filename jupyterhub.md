@@ -155,7 +155,7 @@ NO_PROXY="localhost, 127.0.0.1,.homologacao.com.br,.empresa.com.br"
 
 
 
-## 4 - Instalar o rancher-server via docker no node node2003
+## 4 - Instalar o rancher-server via docker no node2003
 
 **Vamos usar as opções "-v" para persistir os dados e "-p" para o mapeamento das portas 80 e 443:**
 
@@ -226,7 +226,7 @@ $ vim ~/.kube/config
 $ kubectl get nodes
 ```
 
-[Referencia: Instalação do kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+[Referência: Instalação do kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
 
 
 ## 7 - Instalar e configurar o Longhorn 
@@ -300,9 +300,9 @@ kubectl get svc
 **OBS: Depois remover o deployment e service de teste**
 
 
-[Referencia: Instalação do MetallLB](https://metallb.universe.tf/installation/)
+[Referência: Instalação do MetallLB](https://metallb.universe.tf/installation/)
 
-[Referencia: Configuração do MetalLB](https://metallb.universe.tf/configuration/)
+[Referência: Configuração do MetalLB](https://metallb.universe.tf/configuration/)
 
 
 ## 9 - Instalar e configurar o Ingress com o traefik - DNS 
@@ -364,7 +364,7 @@ $ kubectl get svc -n kube-system
 `$ kubectl edit svc traefik-web-ui -nkube-system`
 
 
-[Referencia: Instalação do traefik](https://doc.traefik.io/traefik/v1.7/user-guide/kubernetes/)
+[Referência: Instalação do traefik](https://doc.traefik.io/traefik/v1.7/user-guide/kubernetes/)
 
 
 
@@ -377,7 +377,7 @@ $ ./get_helm.sh
 $ chmod 700 /home/usuario/.kube/config
 ```
 
-[Referencia: Instalação do helm](https://helm.sh/docs/intro/install/)
+[Referência: Instalação do helm](https://helm.sh/docs/intro/install/)
 
 
 ## 11 - Instalar e Configurar o Jupyter HUB via Helm
@@ -395,7 +395,7 @@ $ chmod 700 /home/usuario/.kube/config
 `$ helm show values jupyterhub/jupyterhub > config.yaml` 
 
 
-[Referencia: Instalação do Jupterhub](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub/installation.html)
+[Referência: Instalação do Jupterhub](https://zero-to-jupyterhub.readthedocs.io/en/latest/jupyterhub/installation.html)
 
 
 
@@ -464,7 +464,7 @@ $ vim config.yaml
 ---
 ```
 
-[Referencia: Habilitação do SSL](https://zero-to-jupyterhub.readthedocs.io/en/latest/administrator/security.html#https)
+[Referência: Habilitação do SSL](https://zero-to-jupyterhub.readthedocs.io/en/latest/administrator/security.html#https)
 
 
 ## 14 - Configuração do Active Directory no jupyterhub
@@ -495,7 +495,7 @@ hub:
 ```
 
 
-[Referencia: Integração com LDAP e Active Directory](https://zero-to-jupyterhub.readthedocs.io/en/latest/administrator/authentication.html)
+[Referência: Integração com LDAP e Active Directory](https://zero-to-jupyterhub.readthedocs.io/en/latest/administrator/authentication.html)
 
 
 ## 15 - Defina o tipo de serciço do jupyterhub
