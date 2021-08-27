@@ -1,8 +1,8 @@
 # Stack - Rancher + Kubernetes + Longhorn + MetalLB + JupyterHUB + SSL + LDAP 
 
-### Servidores:
+### Servidores - **RAM 8GB, Processador 4vCPU, Armazenamento 100GB**:
 
-* node2000
+* node2000 
 
 * node2001
 
