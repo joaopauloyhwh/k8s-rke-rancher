@@ -242,10 +242,10 @@ $ kubectl get nodes
 
 **Faça os seguintes passos para a instalação do longhorn:**
 
-1. Selecione o cluster jupter-hub
-2. Selecione o Projeto/namespace default 
-3. Selecione Apps
-4. Clique em Launch e faça a busca pelo longhorn
+1. Selecione o cluster **jupter-hub**
+2. Selecione o Projeto/namespace **default** 
+3. Selecione **Apps**
+4. Clique em Launch e faça a busca pelo **longhorn**
 
 figura8
 
